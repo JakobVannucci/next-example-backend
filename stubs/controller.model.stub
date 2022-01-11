@@ -1,0 +1,52 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use App\Http\Resources\{{ model }}Resource;
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class {{ class }} extends Controller
+{
+
+    public function index()
+    {
+        //
+    }
+
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            //
+        ]);
+
+        ${{ modelVariable }} = {{ model }}::create($validate);
+
+        return new {{ model }}Resource(${{ modelVariable }});
+    }
+
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        return new {{ model }}Resource(${{ modelVariable }});
+    }
+
+    public function update(Request $request, {{ model }} ${{ modelVariable }})
+    {
+        $validated = $request->validate([
+            //
+        ]);
+
+        ${{ modelVariable }}->update($validated);
+
+        return new {{ model }}Resource(${{ modelVariable }});
+    }
+
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        ${{ modelVariable }}->delete();
+
+        return response()->noContent();
+    }
+}
